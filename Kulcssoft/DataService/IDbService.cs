@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DataService
 {
-    class Program
+    public interface IDbService
     {
-        static void Main(string[] args)
-        {
-        }
+        DataTable GetAll();
+
+        bool Delete(int id);
+
+        bool Insert(string name, string email);
     }
 }
