@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DataService;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
-namespace WebApi
+namespace WebApplication1
 {
     public class Program
     {
+        internal static DbService service;
         public static void Main(string[] args)
         {
+            service = DbFactory.GetService();
             BuildWebHost(args).Run();
         }
 
