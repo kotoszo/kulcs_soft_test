@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.OleDb;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Data;
 
 namespace DataService
 {
     public class MsSql : IDbService
     {
-        string connstring = "Server=localhost;Database=master;Trusted_Connection=True;";
         private SqlConnection connection;
 
         public MsSql()
         {
-            connection = new SqlConnection(connstring);
+            connection = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             TableInit();
         }
 
