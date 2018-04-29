@@ -48,6 +48,7 @@
     <Compile Include="IDbService.cs" />
     <Compile Include="MsSql.cs" />
     <Compile Include="DbFactory.cs" />
+    <Compile Include="Imps\MemDb.cs" />
     <Compile Include="DbService.cs" />
     <Compile Include="IDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
