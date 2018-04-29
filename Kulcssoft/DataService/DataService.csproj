@@ -45,10 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDbService.cs" />
-    <Compile Include="MsSql.cs" />
+    <Compile Include="DbFactory.cs" />
+    <Compile Include="Interfaces\IDbService.cs" />
+    <Compile Include="Imps\MemDb.cs" />
+    <Compile Include="Imps\MsSql.cs" />
     <Compile Include="DbService.cs" />
-    <Compile Include="IDataService.cs" />
+    <Compile Include="Interfaces\IDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
