@@ -16,6 +16,16 @@ namespace DataService
             return service.Delete(id);
         }
 
+        public DataRow GetUser(int id)
+        {
+            return service.GetUser(id);
+        }
+
+        public DataRow GetUser(string email)
+        {
+            return service.GetUser(email);
+        }
+
         public DataTable GetUsers()
         {
             return service.GetAll();    

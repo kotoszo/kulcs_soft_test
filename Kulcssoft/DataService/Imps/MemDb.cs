@@ -46,9 +46,10 @@ namespace DataService
                 table.Rows.Remove(table.Select(query)[0]);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("Something went wrong with the remove");
+                Console.WriteLine(e);
             }
             return false;
         }
@@ -72,11 +73,25 @@ namespace DataService
                 
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("Something went wrong with the insert");
+                Console.WriteLine(e);
             }
             return false;
+        }
+
+        public DataRow GetUser(int id)
+        {
+            string query = "Id = " + id;
+            return table.Select(query)[0];
+
+        }
+
+        public DataRow GetUser(string email)
+        {
+            string query = "Email = '" + email+"'";
+            return table.Select(query)[0];
         }
     }
 }

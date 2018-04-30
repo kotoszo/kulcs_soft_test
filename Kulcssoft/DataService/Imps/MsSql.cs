@@ -62,8 +62,9 @@ namespace DataService
                 command.Connection.Open();
                 howMany = command.ExecuteNonQuery();
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
+                System.Console.WriteLine(e);
                 howMany = null;
             }
             finally
@@ -80,11 +81,11 @@ namespace DataService
             {
                 command.Connection.Open();
                 adapter = new SqlDataAdapter(command);
-                table = new DataTable();
                 adapter.Fill(table);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
+                System.Console.WriteLine(e);
                 adapter = null;
             }
             finally
@@ -93,6 +94,22 @@ namespace DataService
                 command.CommandText = null;
             }
             return table;
+        }
+
+        public DataRow GetUser(int id)
+        {
+            string query = "SELECT * FROM Users WHERE id = @id";
+            SqlCommand command = GetCommand(query);
+            command.Parameters.AddWithValue("@id", id);
+            return Execute(command, new DataTable()).Rows[0];
+        }
+
+        public DataRow GetUser(string email)
+        {
+            string query = "SELECT * FROM Users WHERE email = @email";
+            SqlCommand command = GetCommand(query);
+            command.Parameters.AddWithValue("@email", email);
+            return Execute(command, new DataTable()).Rows[0];
         }
     }
 }

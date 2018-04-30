@@ -30,8 +30,7 @@ namespace WebApplication1.Controllers
                 {
                     string name = items[0].Split(':')[1];
                     Program.service.InsertUser(name, email);
-                    var rows = Program.service.GetUsers().Rows;
-                    return Json(rows[rows.Count - 1]);
+                    return Json(Program.service.GetUser(email));
                 }
             }
             return null;
