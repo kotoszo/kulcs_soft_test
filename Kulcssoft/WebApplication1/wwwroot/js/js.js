@@ -15,6 +15,7 @@ function send() {
             contentType: 'application/json; charset=utf-8',
             dataType: "json",
             success: function (data) {
+                PopUp("New User Added!");
                 DOMManipulator(data.itemArray);
             }
         });
@@ -35,6 +36,7 @@ function DOMManipulator(result) {
     var table = document.getElementById("table");
     var row = document.createElement("tr");
     row.id = result[0];
+    document.getElementById("userCounter").innerHTML++;
     result.forEach(function (info) {
         var item = document.createElement("td");
         item.innerHTML = info;
@@ -51,13 +53,19 @@ function deleteButton(id) {
     button.addEventListener("click", function () { deleteUser(id);});
     return button;
 }
-function deleteUser(id){
-    var row = document.getElementById(id);
-    $.ajax({
-        type: "DELETE",
-        url: 'api/Users/' + id,
-        success: row.remove()
-    });
+function deleteUser(id) {
+    if (isPopUpVisibile()) {
+        var row = document.getElementById(id);
+        $.ajax({
+            type: "DELETE",
+            url: 'api/Users/' + id,
+            success: function() {
+                row.remove();
+                PopUp("User Deleted!");
+                document.getElementById("userCounter").innerHTML--;
+            }
+        });
+    }
 }
 function del() {
     var id = document.getElementById("delId").value;
@@ -73,5 +81,16 @@ function isValid(email) {
         return true;
     }
     return false;
+}
+function PopUp(msg) {
+    var item = document.getElementById("popup");
+    item.innerText = msg;
+    item.style.visibility = "visible";
+    setTimeout(function () {
+        item.style.visibility = "hidden";
+    }, 1000);
+}
+function isPopUpVisibile() {
+    return document.getElementById("popup").style.visibility === "hidden";
 }
 main();
