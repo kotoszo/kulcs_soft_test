@@ -70,7 +70,6 @@ namespace DataService
             finally
             {
                 command.Connection.Close();
-                command.CommandText = null;
             }
             return howMany != null;
         }
@@ -91,7 +90,6 @@ namespace DataService
             finally
             {
                 command.Connection.Close();
-                command.CommandText = null;
             }
             return table;
         }
@@ -101,7 +99,12 @@ namespace DataService
             string query = "SELECT * FROM Users WHERE id = @id";
             SqlCommand command = GetCommand(query);
             command.Parameters.AddWithValue("@id", id);
-            return Execute(command, new DataTable()).Rows[0];
+            var rows = Execute(command, new DataTable()).Rows;
+            if(rows.Count > 0)
+            {
+                return rows[0];
+            }
+            return null;
         }
 
         public DataRow GetUser(string email)
@@ -109,7 +112,12 @@ namespace DataService
             string query = "SELECT * FROM Users WHERE email = @email";
             SqlCommand command = GetCommand(query);
             command.Parameters.AddWithValue("@email", email);
-            return Execute(command, new DataTable()).Rows[0];
+            var rows = Execute(command, new DataTable()).Rows;
+            if (rows.Count > 0)
+            {
+                return rows[0];
+            }
+            return null;
         }
     }
 }
