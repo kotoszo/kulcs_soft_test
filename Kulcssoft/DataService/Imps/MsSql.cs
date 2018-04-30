@@ -12,13 +12,17 @@ namespace DataService
             connection = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             TableInit();
         }
-
+        private void DropTable()
+        {
+            string query = "DROP TABLE Users";
+            Execute(GetCommand(query));
+        }
         private void TableInit()
         {
             string select = "SELECT * FROM Users;";
             if (!Execute(GetCommand(select)))
             {
-                string query = "CREATE TABLE Users(id INT NOT NULL IDENTITY(1,1) PRIMARY KEY, name varchar(50), email varchar(50));";
+                string query = "CREATE TABLE Users(id INT NOT NULL IDENTITY(1,1) PRIMARY KEY, name varchar(50) NOT NULL, email varchar(50) NOT NULL UNIQUE);";
                 Execute(GetCommand(query));
             }
         }
