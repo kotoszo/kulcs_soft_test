@@ -2,11 +2,41 @@
     width:75%;
     margin-left:auto;
     margin-right:auto;
+    font-family:Georgia;
 }
 tr, th{
     text-align:center;
+    font-size:14px;
 }
-.welcome{
-    text-align:center;
+.welcome, h3, input {
+    font-family: 'Agency FB';
+}
+.welcome, .button {
+    color: white;
+    text-align: center;
+}
+.welcome {
+    font-size: 36px;
+}
+.delButton{
+    background-color:darkred;
+}
+.button{
+    background-color:black;
+    font-size:16px;
+}
+body{
+    font-size:175%;
+}
+.popup {
+    visibility:hidden;
+    font-size:24px;
+    background-color:green;
+    border-radius:10px;
     color:white;
+}
+.infobar{
+    margin-top:10%;
+    margin-bottom:5%;
+    text-align:center;
 }
