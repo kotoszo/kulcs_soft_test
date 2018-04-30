@@ -15,7 +15,13 @@
         <input type="text" id="delId" placeholder="User Id" name="Id" />
         <input class="button" name="button" id="delButton" type="button" value="Delete" />
     </div>
-    <div class="row">
+    <div class="row infobar">
+        <div class="col-sm-offset-4 col-sm-4">
+            <label class="popup" id="popup" style="visibility:hidden">PopUpMessage</label>
+        </div>
+        <div class="col-sm-offset-1 col-sm-3">
+            <label>Total User Count:<span id="userCounter">0</span></label>
+        </div>
         <table class="table" name="table" id="table">
             <tr>
                 <th>Id</th>
