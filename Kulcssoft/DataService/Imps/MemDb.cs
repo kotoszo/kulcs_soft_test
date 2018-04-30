@@ -21,6 +21,7 @@ namespace DataService
                 table.Columns.Add(column);
             }
             table.PrimaryKey = new DataColumn[] { table.Columns[0] };
+            table.Columns[2].Unique = true;
             AddUsers();
         }
 
