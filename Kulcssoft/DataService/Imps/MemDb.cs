@@ -3,7 +3,7 @@ using System.Data;
 
 namespace DataService
 {
-    internal class MemDb : IDbService
+    public class MemDb : IDbService
     {
         private DataTable table;
 
@@ -46,9 +46,10 @@ namespace DataService
                 table.Rows.Remove(table.Select(query)[0]);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("Something went wrong with the remove");
+                Console.WriteLine(e);
             }
             return false;
         }
@@ -72,11 +73,34 @@ namespace DataService
                 
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("Something went wrong with the insert");
+                Console.WriteLine(e);
             }
             return false;
+        }
+
+        public DataRow GetUser(int id)
+        {
+            string query = "Id = " + id;
+            DataRow[] row = table.Select(query);
+            if (row.Length > 0)
+            {
+                return row[0];
+            }
+            return null;
+        }
+
+        public DataRow GetUser(string email)
+        {
+            string query = "Email = '" + email+"'";
+            DataRow[] row = table.Select(query);
+            if(row.Length > 0)
+            {
+                return row[0];
+            }
+            return null;
         }
     }
 }
