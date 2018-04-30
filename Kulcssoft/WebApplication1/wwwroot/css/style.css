@@ -28,3 +28,15 @@ tr, th{
 body{
     font-size:175%;
 }
+.popup {
+    visibility:hidden;
+    font-size:24px;
+    background-color:green;
+    border-radius:10px;
+    color:white;
+}
+.infobar{
+    margin-top:10%;
+    margin-bottom:5%;
+    text-align:center;
+}
