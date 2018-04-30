@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
                 if (EmailValidator(email))
                 {
                     string name = items[0].Split(':')[1];
-                    Program.service.InsertUser(name, email);
+                    Program.service.AddUser(name, email);
                     return Json(Program.service.GetUser(email));
                 }
             }

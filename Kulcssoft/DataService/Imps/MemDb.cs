@@ -3,7 +3,7 @@ using System.Data;
 
 namespace DataService
 {
-    internal class MemDb : IDbService
+    public class MemDb : IDbService
     {
         private DataTable table;
 
@@ -84,14 +84,23 @@ namespace DataService
         public DataRow GetUser(int id)
         {
             string query = "Id = " + id;
-            return table.Select(query)[0];
-
+            DataRow[] row = table.Select(query);
+            if (row.Length > 0)
+            {
+                return row[0];
+            }
+            return null;
         }
 
         public DataRow GetUser(string email)
         {
             string query = "Email = '" + email+"'";
-            return table.Select(query)[0];
+            DataRow[] row = table.Select(query);
+            if(row.Length > 0)
+            {
+                return row[0];
+            }
+            return null;
         }
     }
 }

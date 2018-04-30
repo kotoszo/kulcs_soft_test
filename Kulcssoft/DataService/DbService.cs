@@ -31,7 +31,7 @@ namespace DataService
             return service.GetAll();    
         }
 
-        public bool InsertUser(string name, string email)
+        public bool AddUser(string name, string email)
         {
             return service.Insert(name, email);
         }
