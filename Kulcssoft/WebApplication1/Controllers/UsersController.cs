@@ -29,8 +29,10 @@ namespace WebApplication1.Controllers
                 if (EmailValidator(email))
                 {
                     string name = items[0].Split(':')[1];
-                    Program.service.AddUser(name, email);
-                    return Json(Program.service.GetUser(email));
+                    if(Program.service.AddUser(name, email))
+                    {
+                        return Json(Program.service.GetUser(email));
+                    }
                 }
             }
             return null;
