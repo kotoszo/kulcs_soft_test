@@ -45,8 +45,9 @@ function DOMManipulator(result) {
     table.appendChild(row);
 }
 function deleteButton(id) {
-    var button = document.createElement("button");
-    button.innerText = "X";
+    var button = document.createElement("input");
+    button.type = "button";
+    button.className = "btn btn-default delButton";
     button.addEventListener("click", function () { deleteUser(id);});
     return button;
 }
